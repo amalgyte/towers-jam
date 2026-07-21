@@ -64,7 +64,7 @@
         const live = status.active === true && invite && Number.isFinite(expiresAt) && expiresAt > Date.now();
         if (!live) { state.state = "offline"; return; }
         join.href = invite;
-        qr.src = /^data:image\/png;base64,[A-Za-z0-9+/=]+$/.test(status.qrDataUrl || "") ? status.qrDataUrl : "";
+        qr.src = /^data:image\/(?:png|svg\+xml);base64,[A-Za-z0-9+/=]+$/.test(status.qrDataUrl || "") ? status.qrDataUrl : "";
         programme.textContent = String(status.programmeName || "Towers").slice(0, 100);
         state.state = "live";
       } catch {
